@@ -18,4 +18,39 @@ class Student {
         this.assignment3 = assignment3;
     }
 
+    public double getAssignment1() {
+        return assignment1;
+    }
+
+    public double getAssignment2() {
+        return assignment2;
+    }
+
+    public double getAssignment3() {
+        return assignment3;
+    }
+
+    public double getTotalMarks() {
+        return totalMarks;
+    }
+    
+    public void setTotalMarks(double totalMarks) {
+        this.totalMarks = totalMarks;
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
 }
