@@ -25,3 +25,6 @@
     - Note that the implementation must be in line with the pseudo code, and existing searching and sorting library functions are not allowed in Algorithm 4.
 - F5: Menu System
     - Create a simple menu system to allow users to select and execute each function.
+
+## References
+- Conventional Commit [Link](https://www.conventionalcommits.org/en/v1.0.0)
