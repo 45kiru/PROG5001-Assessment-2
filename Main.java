@@ -38,7 +38,7 @@ public class Main {
                     break;
                 case 3:
                     // F4: Print Top 5 and Bottom 5 Students
-                    // printTopAndBottomStudents(students);
+                    printTopAndBottomStudents(students);
                     break;
                 case 4:
                     // Exit the program
@@ -48,7 +48,6 @@ public class Main {
                     System.out.println("Invalid choice. Please select a valid option.");
             }
         }
-    
     }
 
     private static List<Student> readStudentDataFromCSV(String csvFileName) {
@@ -139,6 +138,96 @@ public class Main {
                 System.out.println(border);
             }
         }
+    }
+
+    private static void printTopAndBottomStudents(List<Student> students) {
+        List<Student> topFiveHighestMarks = new ArrayList<>();
+        List<Student> topFiveLowestMarks = new ArrayList<>();
+        List<Double> highestMarks = new ArrayList<>();
+        List<Double> lowestMarks = new ArrayList<>();
+
+        for (Student student : students) {
+            if (highestMarks.size() < 5) {
+                highestMarks.add(student.getTotalMarks());
+                topFiveHighestMarks.add(student);
+            } else {
+                double lowestHighMark = findLowestValue(highestMarks);
+                if (student.getTotalMarks() > lowestHighMark) {
+                    int index = highestMarks.indexOf(lowestHighMark);
+                    highestMarks.set(index, student.getTotalMarks());
+                    topFiveHighestMarks.set(index, student);
+                }
+            }
+
+            if (lowestMarks.size() < 5) {
+                lowestMarks.add(student.getTotalMarks());
+                topFiveLowestMarks.add(student);
+            } else {
+                double highestLowMark = findHighestValue(lowestMarks);
+                if (student.getTotalMarks() < highestLowMark) {
+                    int index = lowestMarks.indexOf(highestLowMark);
+                    lowestMarks.set(index, student.getTotalMarks());
+                    topFiveLowestMarks.set(index, student);
+                }
+            }
+        }
+
+        System.out.println("Top 5 Students with the Highest Total Marks:");
+        String border = "+---------------+---------------------------+----------------------+---------------+";
+        System.out.println(border);
+        System.out.printf(
+            "| %-13s | %-25s | %-20s | %-13s |%n",
+            "Student ID", "Last Name", "First Name", "Total Marks"
+        );
+        System.out.println(border);
+        for (Student student : topFiveHighestMarks) {
+            System.out.printf(
+                "| %-13s | %-25s | %-20s | %-13.2f |%n",
+                student.getStudentId(),
+                student.getLastName(),
+                student.getFirstName(),
+                student.getTotalMarks()
+            );
+            System.out.println(border);
+        }
+
+        System.out.println("\nBottom 5 Students with the Lowest Total Marks:");
+        System.out.println(border);
+        System.out.printf(
+            "| %-13s | %-25s | %-20s | %-13s |%n",
+            "Student ID", "Last Name", "First Name", "Total Marks"
+        );
+        System.out.println(border);
+        for (Student student : topFiveLowestMarks) {
+            System.out.printf(
+                "| %-13s | %-25s | %-20s | %-13.2f |%n",
+                student.getStudentId(),
+                student.getLastName(),
+                student.getFirstName(),
+                student.getTotalMarks()
+            );
+            System.out.println(border);
+        }
+    }
+
+    private static double findLowestValue(List<Double> values) {
+        double lowest = Double.MAX_VALUE;
+        for (double value : values) {
+            if (value < lowest) {
+                lowest = value;
+            }
+        }
+        return lowest;
+    }
+
+    private static double findHighestValue(List<Double> values) {
+        double highest = Double.MIN_VALUE;
+        for (double value : values) {
+            if (value > highest) {
+                highest = value;
+            }
+        }
+        return highest;
     }
 
     private static void displayMenu() {
