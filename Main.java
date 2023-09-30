@@ -94,15 +94,26 @@ public class Main {
 
     private static void printStudents(List<Student> students) {
         System.out.println("List of Students with Total Marks:");
+        String border = "+---------------+---------------------------+----------------------+---------------+---------------+---------------+---------------+";
+        System.out.println(border);
+        System.out.printf(
+            "| %-13s | %-25s | %-20s | %-13s | %-13s | %-13s | %-13s |%n",
+        "Student ID", "Last Name", "First Name", "Assignment 1", "Assignment 2", "Assignment 3", "Total Marks"
+        );
+        System.out.println(border);
+        // Print each student as a table row
         for (Student student : students) {
-            System.out.println(student.getStudentId()+" "+
-                student.getLastName()+" \t"+
-                student.getFirstName()+" \t"+
-                student.getAssignment1()+" \t"+
-                student.getAssignment2()+" \t"+
-                student.getAssignment3()+" \t"+
+            System.out.printf(
+                "| %-13s | %-25s | %-20s | %-13.2f | %-13.2f | %-13.2f | %-13.2f |%n",
+                student.getStudentId(),
+                student.getLastName(),
+                student.getFirstName(),
+                student.getAssignment1(),
+                student.getAssignment2(),
+                student.getAssignment3(),
                 student.getTotalMarks()
             );
+            System.out.println(border);
         }
     }
 
