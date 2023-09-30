@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,38 @@ public class Main {
             System.out.println(student.getLastName()+" "+student.getFirstName());
         }
 
- 
+         Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            displayMenu();
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    // F2: Calculate Total Marks
+                    // calculateTotalMarks(students);
+                    // printStudents(students);
+                    break;
+                case 2:
+                    // F3: Print Students Below Threshold
+                    // System.out.print("Enter the threshold: ");
+                    // int threshold = scanner.nextInt();
+                    // printStudentsBelowThreshold(students, threshold);
+                    break;
+                case 3:
+                    // F4: Print Top 5 and Bottom 5 Students
+                    // printTopAndBottomStudents(students);
+                    break;
+                case 4:
+                    // Exit the program
+                    System.out.println("Exiting the program.");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    
     }
 
     private static List<Student> readStudentDataFromCSV(String csvFileName) {
@@ -55,5 +87,14 @@ public class Main {
         } catch (NumberFormatException e) {
             return 0.0; // Return 0.0 for missing or invalid values
         }
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nMenu:");
+        System.out.println("1. Calculate Total Marks and Print All Students");
+        System.out.println("2. Print Students Below Threshold");
+        System.out.println("3. Print Top 5 and Bottom 5 Students");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
     }
 }
