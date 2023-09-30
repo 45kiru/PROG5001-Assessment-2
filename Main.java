@@ -19,6 +19,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            // F5: Menu System
             displayMenu();
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
@@ -31,9 +32,9 @@ public class Main {
                     break;
                 case 2:
                     // F3: Print Students Below Threshold
-                    // System.out.print("Enter the threshold: ");
-                    // int threshold = scanner.nextInt();
-                    // printStudentsBelowThreshold(students, threshold);
+                    System.out.print("Enter the threshold: ");
+                    int threshold = scanner.nextInt();
+                    printStudentsBelowThreshold(students, threshold);
                     break;
                 case 3:
                     // F4: Print Top 5 and Bottom 5 Students
@@ -114,6 +115,29 @@ public class Main {
                 student.getTotalMarks()
             );
             System.out.println(border);
+        }
+    }
+
+    private static void printStudentsBelowThreshold(List<Student> students, int threshold) {
+        System.out.println("Students Below Threshold (" + threshold + "):");
+        String border = "+---------------+---------------------------+----------------------+---------------+";
+        System.out.println(border);
+        System.out.printf(
+            "| %-13s | %-25s | %-20s | %-13s |%n",
+        "Student ID", "Last Name", "First Name", "Total Marks"
+        );
+        System.out.println(border);
+        for (Student student : students) {
+            if (student.getTotalMarks() < threshold) {
+                System.out.printf(
+                    "| %-13s | %-25s | %-20s | %-13.2f |%n",
+                    student.getStudentId(),
+                    student.getLastName(),
+                    student.getFirstName(),
+                    student.getTotalMarks()
+                );
+                System.out.println(border);
+            }
         }
     }
 
