@@ -10,3 +10,51 @@ FOR EACH student IN students
         PRINT "Total Marks: " + student.total_marks
     END IF
 END FOR
+
+==========================================================
+
+ALGORITHM-4
+----------------------------------------------------------
+students = List of student objects
+topFiveHighestMarks = empty list
+topFiveLowestMarks = empty list
+highestMarks = []
+lowestMarks = []
+
+FOR EACH student IN students
+    IF length of highestMarks < 5
+        Append student.total_marks to highestMarks
+        Append student to topFiveHighestMarks
+    ELSE
+        Initialize minHighMarkIndex as the index of the minimum value in highestMarks
+        IF student.total_marks > lowest value in highestMarks
+            Replace the lowest value in highestMarks with student.total_marks
+            Replace the corresponding student in topFiveHighestMarks with the current student
+        END IF
+    END IF
+
+    IF length of lowestMarks < 5
+        Append student.total_marks to lowestMarks
+        Append student to topFiveLowestMarks
+    ELSE
+        Initialize maxLowMarkIndex as the index of the maximum value in lowestMarks
+        IF student.total_marks < highest value in lowestMarks
+            Replace the highest value in lowestMarks with student.total_marks
+            Replace the corresponding student in topFiveLowestMarks with the current student
+        END IF
+    END IF
+END FOR
+
+PRINT "Top 5 Students with the Highest Total Marks:"
+FOR EACH student IN topFiveHighestMarks
+    PRINT "Student Name: " + student.name
+    PRINT "Student ID: " + student.student_id
+    PRINT "Total Marks: " + student.total_marks
+END FOR
+
+PRINT "Top 5 Students with the Lowest Total Marks:"
+FOR EACH student IN topFiveLowestMarks
+    PRINT "Student Name: " + student.name
+    PRINT "Student ID: " + student.student_id
+    PRINT "Total Marks: " + student.total_marks
+END FOR
