@@ -27,4 +27,7 @@
     - Create a simple menu system to allow users to select and execute each function.
 
 ## References
+- Algorithm [PseudoCode.txt](PseudoCode.txt) 
+
+## References
 - Conventional Commit [Link](https://www.conventionalcommits.org/en/v1.0.0)
