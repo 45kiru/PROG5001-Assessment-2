@@ -55,7 +55,8 @@ public class Main {
     private static List<Student> readStudentDataFromCSV(String csvFileName) {
         List<Student> students = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFileName))) {
-            String unitName = br.readLine();
+            String unitName = br.readLine(); 
+            String headerLine = br.readLine();
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -72,13 +73,13 @@ public class Main {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
 
         return students;
     }
 
+   
     private static double parseDouble(String s) {
         try {
             return Double.parseDouble(s);
