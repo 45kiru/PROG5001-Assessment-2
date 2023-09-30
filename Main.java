@@ -32,12 +32,14 @@ public class Main {
                     break;
                 case 2:
                     // F3: Print Students Below Threshold
+                    calculateTotalMarks(students);
                     System.out.print("Enter the threshold: ");
                     int threshold = scanner.nextInt();
                     printStudentsBelowThreshold(students, threshold);
                     break;
                 case 3:
                     // F4: Print Top 5 and Bottom 5 Students
+                    calculateTotalMarks(students);
                     printTopAndBottomStudents(students);
                     break;
                 case 4:
