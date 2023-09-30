@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,16 +8,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String csvFileName = "prog5001_students_grade_2022.csv";
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the path of the CSV file: ");
+        String csvFileName = scanner.nextLine();
+
         // F1: Read Data from Text File
         List<Student> students = readStudentDataFromCSV(csvFileName);
 
-        if (students.isEmpty()) {
+        if (students == null) {
+            System.out.println("File not found or an error occurred.");
+            return;
+        } else if (students.isEmpty()) {
             System.out.println("No student data found.");
             return;
         }
-
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             // F5: Menu System
@@ -72,7 +78,10 @@ public class Main {
                     students.add(new Student(unitName, lastName, firstName, studentId, assignment1, assignment2, assignment3));
                 }
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            return null;
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 
