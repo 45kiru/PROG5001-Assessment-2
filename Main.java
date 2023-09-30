@@ -16,11 +16,7 @@ public class Main {
             return;
         }
 
-        for (Student student : students) {
-            System.out.println(student.getLastName()+" "+student.getFirstName());
-        }
-
-         Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             displayMenu();
@@ -30,8 +26,8 @@ public class Main {
             switch (choice) {
                 case 1:
                     // F2: Calculate Total Marks
-                    // calculateTotalMarks(students);
-                    // printStudents(students);
+                    calculateTotalMarks(students);
+                    printStudents(students);
                     break;
                 case 2:
                     // F3: Print Students Below Threshold
@@ -86,6 +82,27 @@ public class Main {
             return Double.parseDouble(s);
         } catch (NumberFormatException e) {
             return 0.0; // Return 0.0 for missing or invalid values
+        }
+    }
+
+    private static void calculateTotalMarks(List<Student> students) {
+        for (Student student : students) {
+            double totalMarks = student.getAssignment1() + student.getAssignment2() + student.getAssignment3();
+            student.setTotalMarks(totalMarks);
+        }
+    }
+
+    private static void printStudents(List<Student> students) {
+        System.out.println("List of Students with Total Marks:");
+        for (Student student : students) {
+            System.out.println(student.getStudentId()+" "+
+                student.getLastName()+" \t"+
+                student.getFirstName()+" \t"+
+                student.getAssignment1()+" \t"+
+                student.getAssignment2()+" \t"+
+                student.getAssignment3()+" \t"+
+                student.getTotalMarks()
+            );
         }
     }
 
