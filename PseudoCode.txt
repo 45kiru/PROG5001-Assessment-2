@@ -1,0 +1,12 @@
+ALGORITHM-3
+----------------------------------------------------------
+students = List of student form file
+threshold = user input
+
+FOR EACH student IN students
+    IF student.total_marks < threshold
+        PRINT "Student ID: " + student.student_id
+        PRINT "Student Name: " + student.name
+        PRINT "Total Marks: " + student.total_marks
+    END IF
+END FOR
